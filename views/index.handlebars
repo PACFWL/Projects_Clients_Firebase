@@ -1,0 +1,50 @@
+<div class="container my-4">
+    <nav class="navbar bg-primary navbar-expand-lg" data-bs-theme="dark">
+        <a class="navbar-brand" href="#">SISTEMA WEB</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="/">Cadastrar</a>
+                <a class="nav-link" href="/consulta">Consultar</a>
+            </div>
+        </div>
+    </nav>
+    <div class="my-4">
+        <h2>Cadastrar - Agendamento de Potenciais Clientes</h2>
+        <p>Sistema utilizado para agendamento de serviços</p>
+        <form action="/cadastrar" method="POST">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome">
+            </div>
+            <div class="mb-3">
+                <label for="telefone" class="form-label">Telefone</label>
+                <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="(00) 00000-0000">
+            </div>
+            <div class="mb-3">
+                <label for="origem" class="form-label">Origem</label>
+                <select id="origem" class="form-select" name="origem">
+                    <option value="celular">Celular</option>
+                    <option value="whatsapp">WhatsApp</option>
+                    <option value="telefone_fixo">Telefone Fixo</option>
+                    <option value="email">E-mail</option>
+                    <option value="facebook">Facebook</option>
+                    <option value="instagram">Instagram</option>
+                    <option value="google_ads">Google Ads</option>
+                    <option value="outros">Outros</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="data_contato" class="form-label">Data do Contato</label>
+                <input type="date" class="form-control" id="data_contato" name="data_contato">
+            </div>
+            <div class="mb-3">
+                <label for="observacao" class="form-label">Observação</label>
+                <textarea class="form-control" id="observacao" name="observacao" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+</div>

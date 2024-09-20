@@ -1,0 +1,52 @@
+<div class="container-fluid justify-content-center">
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">SISTEMA WEB</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Cadastrar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/consulta">Consultar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container my-4">
+        <h2 class="text-start">Consultas Agendadas</h2>
+        <p class="text-start fs-6">Sistema utilizado para agendamento de serviços</p>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Telefone</th>
+                        <th>Origem</th>
+                        <th>Data de Contato</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each posts}}
+                    <tr>
+                        <td>{{this.nome}}</td>
+                        <td>{{this.telefone}}</td>
+                        <td>{{this.origem}}</td>
+                        <td>{{this.data_contato}}</td>
+                        <td>
+                            <a href="/editar/{{this.id}}" class="btn btn-primary btn-sm">Editar</a>
+                            <a href="/excluir/{{this.id}}" class="btn btn-danger btn-sm">Excluir</a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
