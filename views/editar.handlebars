@@ -1,0 +1,57 @@
+<div class="container my-4">
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">SISTEMA WEB</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Cadastrar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/consulta">Consultar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="my-4">
+        <h2>Editar Agendamento</h2>
+        <p>Atualize os dados do agendamento.</p>
+        <form action="/editar/{{id}}" method="POST">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" value="{{nome}}">
+            </div>
+            <div class="mb-3">
+                <label for="telefone" class="form-label">Telefone</label>
+                <input type="tel" class="form-control" id="telefone" name="telefone" value="{{telefone}}">
+            </div>
+            <div class="mb-3">
+                <label for="origem" class="form-label">Origem</label>
+                <select id="origem" class="form-select" name="origem">
+                    <option value="celular" {{#if (eq origem "celular")}}selected{{/if}}>Celular</option>
+                    <option value="whatsapp" {{#if (eq origem "whatsapp")}}selected{{/if}}>WhatsApp</option>
+                    <option value="telefone_fixo" {{#if (eq origem "telefone_fixo")}}selected{{/if}}>Telefone Fixo</option>
+                    <option value="email" {{#if (eq origem "email")}}selected{{/if}}>E-mail</option>
+                    <option value="facebook" {{#if (eq origem "facebook")}}selected{{/if}}>Facebook</option>
+                    <option value="instagram" {{#if (eq origem "instagram")}}selected{{/if}}>Instagram</option>
+                    <option value="google_ads" {{#if (eq origem "google_ads")}}selected{{/if}}>Google Ads</option>
+                    <option value="outros" {{#if (eq origem "outros")}}selected{{/if}}>Outros</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="data_contato" class="form-label">Data do Contato</label>
+                <input type="date" class="form-control" id="data_contato" name="data_contato" value="{{data_contato}}">
+            </div>
+            <div class="mb-3">
+                <label for="observacao" class="form-label">Observação</label>
+                <textarea class="form-control" id="observacao" name="observacao" rows="3">{{observacao}}</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+    </div>
+</div>

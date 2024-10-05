@@ -4,34 +4,31 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const admin = require('firebase-admin');
 const serviceAccount = require('./config/serviceAccountKey.json');
-
+const helpers = require('handlebars-helpers')(); 
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
+
 const db = admin.firestore();
-
 const app = express();
-
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
-app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }));
+app.engine('handlebars', exphbs.engine({
+  defaultLayout: 'main',
+  helpers: helpers 
+}));
 app.set('view engine', 'handlebars');
 
-
 app.use(express.static('public'));
-
-
 app.use(cors());
 
 
 
-
-app.get('/', (req, res) => {
-  res.render('index');
+app.get('/cadastrar', (req, res) => {
+  res.render('cadastrar');
 });
 
 
@@ -52,12 +49,19 @@ app.post('/cadastrar', async (req, res) => {
 
 
 app.get('/editar/:id', async (req, res) => {
-  const agendamentoDoc = await db.collection('agendamentos').doc(req.params.id).get();
-  if (!agendamentoDoc.exists) {
+  const doc = await db.collection('agendamentos').doc(req.params.id).get();
+  if (!doc.exists) {
     return res.redirect('/consulta');
   }
-  const agendamento = { id: agendamentoDoc.id, ...agendamentoDoc.data() };
-  res.render('index', { agendamento });
+  res.render('editar', { id: doc.id, ...doc.data() });
+});
+
+app.post('/editar/:id', async (req, res) => {
+  const { nome, telefone, origem, data_contato, observacao } = req.body;
+  await db.collection('agendamentos').doc(req.params.id).update({
+    nome, telefone, origem, data_contato, observacao
+  });
+  res.redirect('/consulta');
 });
 
 
@@ -65,7 +69,6 @@ app.get('/excluir/:id', async (req, res) => {
   await db.collection('agendamentos').doc(req.params.id).delete();
   res.redirect('/consulta');
 });
-
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
