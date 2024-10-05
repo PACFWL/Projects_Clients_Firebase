@@ -1,4 +1,4 @@
-<div class="container my-4">
+<div class="container-fluid justify-content-center">
     <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">SISTEMA WEB</a>
@@ -9,7 +9,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/">Cadastrar</a>
+                        <a class="nav-link active" href="/cadastrar">Cadastrar</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/consulta">Consultar</a>
@@ -18,21 +18,22 @@
             </div>
         </div>
     </nav>
-    <div class="my-4">
-        <h2>Cadastrar - Agendamento de Potenciais Clientes</h2>
-        <p>Sistema utilizado para agendamento de serviços</p>
+
+    <div class="container my-4">
+        <h2 class="text-start">Cadastrar - Agendamento de Potenciais Clientes</h2>
+        <p class="text-start fs-6">Sistema utilizado para agendamento de serviços</p>
         <form action="/cadastrar" method="POST">
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome">
+                <input type="text" class="form-control" id="nome" name="nome" required>
             </div>
             <div class="mb-3">
                 <label for="telefone" class="form-label">Telefone</label>
-                <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="(00) 00000-0000">
+                <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
             </div>
             <div class="mb-3">
                 <label for="origem" class="form-label">Origem</label>
-                <select id="origem" class="form-select" name="origem">
+                <select id="origem" class="form-select" name="origem" required>
                     <option value="celular">Celular</option>
                     <option value="whatsapp">WhatsApp</option>
                     <option value="telefone_fixo">Telefone Fixo</option>
@@ -45,7 +46,7 @@
             </div>
             <div class="mb-3">
                 <label for="data_contato" class="form-label">Data do Contato</label>
-                <input type="date" class="form-control" id="data_contato" name="data_contato">
+                <input type="date" class="form-control" id="data_contato" name="data_contato" required>
             </div>
             <div class="mb-3">
                 <label for="observacao" class="form-label">Observação</label>
